@@ -1,0 +1,104 @@
+{
+  "kyc_records": {
+    "C001": {
+      "aadhaar_number": "1234-5678-9012",
+      "pan_number": "ABCDE1234F",
+      "address_proof": "Aadhaar",
+      "income_proof": "Salary Slip (Jan-Mar 2024)",
+      "bank_statement": "Uploaded (3 months)",
+      "kyc_score": 95,
+      "verification_status": "APPROVED",
+      "last_verified": "2024-01-15"
+    },
+    "C002": {
+      "aadhaar_number": "2345-6789-0123",
+      "pan_number": "FGHIJ5678K",
+      "address_proof": "Aadhaar",
+      "income_proof": "Pending",
+      "bank_statement": "Not uploaded",
+      "kyc_score": 60,
+      "verification_status": "PENDING",
+      "last_verified": "2024-01-10"
+    },
+    "C003": {
+      "aadhaar_number": "3456-7890-1234",
+      "pan_number": "KLMNO9012P",
+      "address_proof": "Passport",
+      "income_proof": "ITR (FY 2023-24)",
+      "bank_statement": "Uploaded (6 months)",
+      "kyc_score": 90,
+      "verification_status": "APPROVED",
+      "last_verified": "2023-12-20"
+    },
+    "C004": {
+      "aadhaar_number": "4567-8901-2345",
+      "pan_number": "PQRST3456R",
+      "address_proof": "Aadhaar",
+      "income_proof": "Salary Slip (Dec-Feb 2024)",
+      "bank_statement": "Pending",
+      "kyc_score": 75,
+      "verification_status": "PENDING",
+      "last_verified": "2024-01-05"
+    },
+    "C005": {
+      "aadhaar_number": "5678-9012-3456",
+      "pan_number": "STUVW7890U",
+      "address_proof": "Aadhaar",
+      "income_proof": "Salary Slip + Form 16",
+      "bank_statement": "Uploaded (12 months)",
+      "kyc_score": 98,
+      "verification_status": "APPROVED",
+      "last_verified": "2023-11-30"
+    },
+    "C006": {
+      "aadhaar_number": "6789-0123-4567",
+      "pan_number": "VWWXY1234Z",
+      "address_proof": "Rental Agreement",
+      "income_proof": "Salary Slip (Nov-Jan 2024)",
+      "bank_statement": "Uploaded (3 months)",
+      "kyc_score": 85,
+      "verification_status": "APPROVED",
+      "last_verified": "2024-01-12"
+    },
+    "C007": {
+      "aadhaar_number": null,
+      "pan_number": null,
+      "address_proof": "None",
+      "income_proof": "Pending",
+      "bank_statement": "Not uploaded",
+      "kyc_score": 20,
+      "verification_status": "NOT_STARTED",
+      "last_verified": null
+    },
+    "C008": {
+      "aadhaar_number": "7890-1234-5678",
+      "pan_number": "YZAAB5678C",
+      "address_proof": "Aadhaar",
+      "income_proof": "Salary Slip (Oct-Dec 2023)",
+      "bank_statement": "Uploaded (3 months)",
+      "kyc_score": 88,
+      "verification_status": "APPROVED",
+      "last_verified": "2023-12-15"
+    },
+    "C009": {
+      "aadhaar_number": null,
+      "pan_number": null,
+      "address_proof": "None",
+      "income_proof": "None",
+      "bank_statement": "Not uploaded",
+      "kyc_score": 10,
+      "verification_status": "NOT_STARTED",
+      "last_verified": null
+    },
+    "C010": {
+      "aadhaar_number": "8901-2345-6789",
+      "pan_number": "BCDEF9012D",
+      "address_proof": "Aadhaar",
+      "income_proof": "Salary Slip (Jan-Mar 2024)",
+      "bank_statement": "Uploaded (6 months)",
+      "kyc_score": 92,
+      "verification_status": "APPROVED",
+      "last_verified": "2024-01-18"
+    }
+  }
+}

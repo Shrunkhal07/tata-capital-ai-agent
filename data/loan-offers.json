@@ -1,0 +1,60 @@
+{
+  "offers": [
+    {
+      "offer_id": "OFF001",
+      "name": "Quick Cash Personal Loan",
+      "min_amount": 50000,
+      "max_amount": 500000,
+      "tenure_months": [12, 24, 36, 48, 60],
+      "interest_rate_range": [9.5, 12.5],
+      "processing_fee_percent": 1.0,
+      "eligibility_criteria": {
+        "min_credit_score": 650,
+        "min_monthly_income": 25000,
+        "max_dti": 50
+      }
+    },
+    {
+      "offer_id": "OFF002",
+      "name": "Flexi Personal Loan",
+      "min_amount": 100000,
+      "max_amount": 1000000,
+      "tenure_months": [24, 36, 48, 60, 72],
+      "interest_rate_range": [10.0, 13.0],
+      "processing_fee_percent": 0.75,
+      "eligibility_criteria": {
+        "min_credit_score": 700,
+        "min_monthly_income": 40000,
+        "max_dti": 60
+      }
+    },
+    {
+      "offer_id": "OFF003",
+      "name": "Salary Advance Loan",
+      "min_amount": 25000,
+      "max_amount": 200000,
+      "tenure_months": [6, 12, 18, 24],
+      "interest_rate_range": [11.0, 14.0],
+      "processing_fee_percent": 1.5,
+      "eligibility_criteria": {
+        "min_credit_score": 600,
+        "min_monthly_income": 20000,
+        "max_dti": 40
+      }
+    },
+    {
+      "offer_id": "OFF004",
+      "name": "Premium Personal Loan",
+      "min_amount": 300000,
+      "max_amount": 1500000,
+      "tenure_months": [36, 48, 60, 84],
+      "interest_rate_range": [8.5, 11.0],
+      "processing_fee_percent": 0.5,
+      "eligibility_criteria": {
+        "min_credit_score": 750,
+        "min_monthly_income": 75000,
+        "max_dti": 45
+      }
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "credit_reports": {
+    "C001": {
+      "cibil_score": 750,
+      "experian_score": 765,
+      "equifax_score": 742,
+      "total_outstanding": 2500000,
+      "active_loans": 1,
+      "payment_history": "Excellent (0 delays)",
+      "inquiries_last_6m": 2,
+      "high_credit_limit": 5000000,
+      "utilization_ratio": 15,
+      "risk_category": "LOW"
+    },
+    "C002": {
+      "cibil_score": 680,
+      "experian_score": 695,
+      "equifax_score": 672,
+      "total_outstanding": 0,
+      "active_loans": 0,
+      "payment_history": "Good (No delays)",
+      "inquiries_last_6m": 1,
+      "high_credit_limit": 300000,
+      "utilization_ratio": 0,
+      "risk_category": "MEDIUM"
+    },
+    "C003": {
+      "cibil_score": 720,
+      "experian_score": 735,
+      "equifax_score": 710,
+      "total_outstanding": 800000,
+      "active_loans": 1,
+      "payment_history": "Good (1 delay >30 days)",
+      "inquiries_last_6m": 3,
+      "high_credit_limit": 1500000,
+      "utilization_ratio": 25,
+      "risk_category": "LOW"
+    },
+    "C004": {
+      "cibil_score": 620,
+      "experian_score": 635,
+      "equifax_score": 610,
+      "total_outstanding": 450000,
+      "active_loans": 1,
+      "payment_history": "Fair (2 delays >60 days)",
+      "inquiries_last_6m": 5,
+      "high_credit_limit": 500000,
+      "utilization_ratio": 45,
+      "risk_category": "HIGH"
+    },
+    "C005": {
+      "cibil_score": 780,
+      "experian_score": 795,
+      "equifax_score": 775,
+      "total_outstanding": 3000000,
+      "active_loans": 1,
+      "payment_history": "Excellent (0 delays)",
+      "inquiries_last_6m": 1,
+      "high_credit_limit": 8000000,
+      "utilization_ratio": 12,
+      "risk_category": "LOW"
+    },
+    "C006": {
+      "cibil_score": 700,
+      "experian_score": 715,
+      "equifax_score": 690,
+      "total_outstanding": 0,
+      "active_loans": 0,
+      "payment_history": "Good (No delays)",
+      "inquiries_last_6m": 2,
+      "high_credit_limit": 500000,
+      "utilization_ratio": 0,
+      "risk_category": "LOW"
+    },
+    "C007": {
+      "cibil_score": 640,
+      "experian_score": 655,
+      "equifax_score": 630,
+      "total_outstanding": 1800000,
+      "active_loans": 1,
+      "payment_history": "Poor (3 delays >90 days)",
+      "inquiries_last_6m": 4,
+      "high_credit_limit": 2500000,
+      "utilization_ratio": 60,
+      "risk_category": "HIGH"
+    },
+    "C008": {
+      "cibil_score": 710,
+      "experian_score": 725,
+      "equifax_score": 700,
+      "total_outstanding": 700000,
+      "active_loans": 1,
+      "payment_history": "Good (1 delay <30 days)",
+      "inquiries_last_6m": 2,
+      "high_credit_limit": 1200000,
+      "utilization_ratio": 20,
+      "risk_category": "LOW"
+    },
+    "C009": {
+      "cibil_score": 590,
+      "experian_score": 605,
+      "equifax_score": 580,
+      "total_outstanding": 50000,
+      "active_loans": 0,
+      "payment_history": "Poor (4 delays >90 days)",
+      "inquiries_last_6m": 6,
+      "high_credit_limit": 200000,
+      "utilization_ratio": 80,
+      "risk_category": "VERY_HIGH"
+    },
+    "C010": {
+      "cibil_score": 730,
+      "experian_score": 745,
+      "equifax_score": 720,
+      "total_outstanding": 300000,
+      "active_loans": 1,
+      "payment_history": "Excellent (0 delays)",
+      "inquiries_last_6m": 1,
+      "high_credit_limit": 1000000,
+      "utilization_ratio": 18,
+      "risk_category": "LOW"
+    }
+  }
+}
