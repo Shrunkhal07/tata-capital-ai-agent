@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const customerRoutes = require('./routes/customers');
 const offerRoutes = require('./routes/offers');
 const kycRoutes = require('./routes/kyc');
-const creditRoutes = require('./routes/credit');
+const creditRoutes = require('./routes/credit');  
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -29,7 +29,7 @@ app.use('/api/credit', creditRoutes(creditReports, customers));
 
 // Health check
 app.get('/health', (req, res) => {
-  res.json({ status: 'OK', timestamp: new Date().toISOString() });
+  res.json({ status: 'Server is Running', timestamp: new Date().toISOString() });
 });
 
 // Start server
@@ -41,4 +41,7 @@ app.listen(PORT, () => {
   console.log(`   GET  /api/offers`);
   console.log(`   POST /api/kyc/verify`);
   console.log(`   GET  /api/credit/:customerId`);
-});
+})
+
+module.exports = app;
+
