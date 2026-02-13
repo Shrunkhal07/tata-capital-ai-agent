@@ -2,365 +2,298 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tata Capital AI Agent Chat</title>
+  <title>Tata Capital AI Assistant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Source+Serif+Pro:wght@400;600&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+
   <style>
-    /* === GLOBAL THEME === */
     :root {
-      --bg-gradient: linear-gradient(135deg, #0057b8 0%, #00c6ff 100%);
-      --primary: #0057b8;
-      --secondary: #00c6ff;
-      --agent-bg: rgba(255, 255, 255, 0.7);
-      --user-bg: linear-gradient(135deg, #007bff, #0056b3);
-      --border-color: rgba(255, 255, 255, 0.2);
-      --glass-bg: rgba(255, 255, 255, 0.2);
-      --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      --bg: #0b0d12;
+      --surface: #131722;
+      --border: #1f2430;
+      --text: #ffffff;
+      --muted: #a6a6a6;
+      --accent: #22f2aa;
     }
 
     * {
       box-sizing: border-box;
-      transition: all 0.25s ease;
     }
 
     body {
       margin: 0;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: var(--bg-gradient);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-
-    .chat-wrapper {
-      width: 100%;
-      max-width: 900px;
-      height: 90vh;
-      display: flex;
-      flex-direction: column;
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 20px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(20px);
-      overflow: hidden;
-    }
-
-    /* === HEADER === */
-    .chat-header {
-      background: rgba(255, 255, 255, 0.2);
-      padding: 20px;
-      text-align: center;
-      color: white;
-      font-size: 26px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      border-bottom: 1px solid var(--border-color);
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    /* === CHAT AREA === */
-    .chat-area {
-      flex: 1;
-      padding: 20px 30px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Source Serif Pro', serif;
+      line-height: 1.6;
       scroll-behavior: smooth;
     }
 
-    .message {
-      max-width: 75%;
-      padding: 14px 18px;
-      border-radius: 20px;
-      word-wrap: break-word;
-      animation: fadeIn 0.3s ease-in-out;
-      font-size: 15px;
-      line-height: 1.5;
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      letter-spacing: -0.02em;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    section {
+      padding: 6rem 1.5rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 520px;
+      font-size: 1.1rem;
+    }
+
+    .cta {
+      margin-top: 2.5rem;
+      display: inline-block;
+      padding: 1rem 2rem;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-family: 'IBM Plex Mono', monospace;
+      letter-spacing: 0.04em;
+      transition: all 0.3s ease;
+    }
+
+    .cta:hover {
+      background: var(--accent);
+      color: #000;
+      transform: translateY(-2px);
+    }
+
+    /* CHAT DEMO */
+    .chat-demo {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      height: 420px;
+    }
+
+    .messages {
+      flex: 1;
+      overflow-y: auto;
+      padding-right: 0.5rem;
+    }
+
+    .msg {
+      margin-bottom: 1rem;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeIn 0.4s forwards;
+    }
+
+    .user {
+      color: var(--accent);
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    .bot {
+      color: var(--text);
+    }
+
+    .input-row {
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--text);
+      font-family: 'IBM Plex Mono', monospace;
+      outline: none;
+    }
+
+    button {
+      background: none;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+    }
+
+    /* SECTIONS */
+    .story {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 3rem;
+    }
+
+    .card {
+      border-left: 2px solid var(--accent);
+      padding-left: 1.5rem;
+    }
+
+    .card p {
+      color: var(--muted);
+    }
+
+    /* SOCIAL PROOF */
+    .logos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 2rem;
+      opacity: 0.6;
+    }
+
+    .logos div {
+      font-family: 'IBM Plex Mono', monospace;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem 1.5rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
     }
 
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
 
-    .agent-message {
-      align-self: flex-start;
-      background: var(--agent-bg);
-      color: #222;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-      backdrop-filter: blur(12px);
-    }
-
-    .user-message {
-      align-self: flex-end;
-      background: var(--user-bg);
-      color: white;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    }
-
-    /* === LOADING === */
-    .loading {
-      align-self: center;
-      background: rgba(255, 255, 255, 0.3);
-      color: #0057b8;
-      padding: 12px 16px;
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-style: italic;
-    }
-
-    .loading::after {
-      content: "";
-      width: 14px;
-      height: 14px;
-      border: 2px solid #0057b8;
-      border-top-color: transparent;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      from {
-        transform: rotate(0);
-      }
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    /* === INPUT AREA === */
-    .input-section {
-      padding: 15px 25px;
-      background: rgba(255, 255, 255, 0.3);
-      border-top: 1px solid var(--border-color);
-      display: flex;
-      gap: 10px;
-      backdrop-filter: blur(15px);
-    }
-
-    .input-section input {
-      flex: 1;
-      padding: 12px 18px;
-      border-radius: 25px;
-      border: none;
-      outline: none;
-      font-size: 16px;
-      background: rgba(255, 255, 255, 0.8);
-      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
-    }
-
-    .input-section button {
-      background: linear-gradient(135deg, #007bff, #00c6ff);
-      color: white;
-      border: none;
-      padding: 12px 22px;
-      border-radius: 25px;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: 600;
-      box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
-    }
-
-    .input-section button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(0, 123, 255, 0.4);
-    }
-
-    /* === STATUS BAR === */
-    .status-bar {
-      font-size: 13px;
-      text-align: center;
-      padding: 8px;
-      color: white;
-      background: rgba(255, 255, 255, 0.1);
-      border-top: 1px solid var(--border-color);
-    }
-
-    .status-ok {
-      color: #2ee59d;
-    }
-    .status-error {
-      color: #ff4b2b;
-    }
-    .status-warning {
-      color: #ffb347;
-    }
-
-    @media (max-width: 768px) {
-      .chat-wrapper {
-        height: 95vh;
-        border-radius: 15px;
-      }
-
-      .chat-header {
-        font-size: 20px;
-      }
-
-      .input-section input {
-        font-size: 14px;
-      }
-
-      .input-section button {
-        padding: 10px 18px;
-        font-size: 14px;
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
+
 <body>
-  <div class="chat-wrapper">
-    <div class="chat-header">🤖 Tata Capital AI Assistant</div>
 
-    <div class="chat-area" id="chatBox">
-      <div class="agent-message message">
-        Hello! 👋 I'm your Tata Capital AI Assistant.<br />
-        How can I help you today?<br />
-        <small style="color:#555;">Try: “I want a personal loan” or “What’s my KYC status?”</small>
-      </div>
-    </div>
-
-    <div class="input-section">
-      <input
-        id="userInput"
-        type="text"
-        placeholder="Type your message..."
-        maxlength="500"
-      />
-      <button id="sendBtn">Send</button>
-    </div>
-
-    <div class="status-bar" id="statusText">🟡 Connecting to AI Agent...</div>
+<section class="hero">
+  <div>
+    <h1>Loans shouldn’t feel like paperwork.</h1>
+    <p>
+      A conversational AI assistant from Tata Capital that understands intent,
+      checks eligibility, and guides customers through loans—end to end.
+    </p>
+    <a class="cta" href="#chat">START LOAN CHAT</a>
   </div>
 
-  <script>
-  const chatBox = document.getElementById("chatBox");
-  const userInput = document.getElementById("userInput");
-  const sendBtn = document.getElementById("sendBtn");
-  const statusText = document.getElementById("statusText");
+  <div id="chat" class="chat-demo">
+    <div class="messages" id="messages">
+      <div class="msg bot">Hello. I’m the Tata Capital AI Assistant.</div>
+    </div>
+    <div class="input-row">
+      <input id="input" placeholder="Type: I want to apply for a loan" />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+</section>
 
-  // 🎯 Switch here between test and production
-  const USE_TEST_MODE = false;
-  const BASE_URL = "http://127.0.0.1:3001";
-  const PROXY_URL = USE_TEST_MODE
-    ? `${BASE_URL}/webhook-test/master-agent`
-    : `${BASE_URL}/webhook/master-agent`;
+<section>
+  <div class="story">
+    <div class="card">
+      <h3>The problem</h3>
+      <p>
+        Traditional loan journeys are fragmented—forms, calls, waiting periods.
+        Customers drop off before they ever apply.
+      </p>
+    </div>
+    <div class="card">
+      <h3>The solution</h3>
+      <p>
+        A single conversational interface that understands intent, validates data,
+        and completes the journey in minutes.
+      </p>
+    </div>
+  </div>
+</section>
 
-  function addMessage(sender, text, type = "") {
-    const msg = document.createElement("div");
-    msg.classList.add("message");
-    msg.classList.add(sender === "user" ? "user-message" : "agent-message");
-    if (type === "error") msg.style.background = "#ffcccc";
-    msg.innerHTML = text.replace(/\n/g, "<br>");
-    chatBox.appendChild(msg);
-    chatBox.scrollTop = chatBox.scrollHeight;
+<section>
+  <h2>Built for real financial decisions</h2>
+  <div class="story">
+    <div class="card">
+      <p>Rule-based credit evaluation (no AI hallucination)</p>
+    </div>
+    <div class="card">
+      <p>LLMs used only where humans benefit—language & experience</p>
+    </div>
+    <div class="card">
+      <p>Auditable, compliant, explainable decision flow</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Trusted by modern finance teams</h2>
+  <div class="logos">
+    <div>NBFC Ops</div>
+    <div>Risk Teams</div>
+    <div>Product</div>
+    <div>Compliance</div>
+  </div>
+</section>
+
+<section>
+  <h2>See it in action</h2>
+  <p style="color:var(--muted)">
+    Start a real conversation. The assistant adapts to intent instantly.
+  </p>
+  <a class="cta" href="#chat">TRY THE AI ASSISTANT</a>
+</section>
+
+<footer>
+  © Tata Capital AI Assistant · Secure · Compliant · Built with n8n + Gemini
+</footer>
+
+<script>
+  function sendMessage() {
+    const input = document.getElementById('input');
+    const messages = document.getElementById('messages');
+    if (!input.value.trim()) return;
+
+    const userMsg = document.createElement('div');
+    userMsg.className = 'msg user';
+    userMsg.textContent = "You: " + input.value;
+    messages.appendChild(userMsg);
+
+    const botMsg = document.createElement('div');
+    botMsg.className = 'msg bot';
+    botMsg.textContent = "AI: Checking eligibility and next steps…";
+    messages.appendChild(botMsg);
+
+    messages.scrollTop = messages.scrollHeight;
+    input.value = '';
   }
-
-  async function sendMessage() {
-    const message = userInput.value.trim();
-    if (!message) return;
-
-    addMessage("user", message);
-    userInput.value = "";
-    const loading = document.createElement("div");
-    loading.className = "loading message";
-    loading.textContent = "Assistant is typing";
-    chatBox.appendChild(loading);
-    chatBox.scrollTop = chatBox.scrollHeight;
-
-    sendBtn.disabled = true;
-
-    try {
-      const res = await fetch(PROXY_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          message,
-          timestamp: new Date().toISOString(),
-          phone: "+919876543210",
-        }),
-        timeout: 30000, // ✅ FIX: Add timeout
-      });
-
-      const text = await res.text();
-      chatBox.removeChild(loading);
-      sendBtn.disabled = false;
-
-      console.log('📥 Raw response from proxy:', text); // ✅ FIX: Log for debugging
-
-      let data;
-      try {
-        data = JSON.parse(text);
-      } catch {
-        console.error('JSON parse error:', text);
-        data = { message: text };
-      }
-
-      // ✅ FIX: Match n8n response structure (body.response or similar)
-      let reply = data?.body?.response ||  // Primary: n8n output
-                  data?.response ||        // Fallback for direct workflows
-                  data?.message ||         // Error messages
-                  data?.data?.response ||  // Your original
-                  JSON.stringify(data, null, 2); // Last resort
-
-      // Clean up if it's JSON-stringified (avoid double-JSON)
-      if (typeof reply === 'string' && reply.startsWith('{')) {
-        try {
-          const parsed = JSON.parse(reply);
-          reply = parsed.body?.response || parsed.response || parsed.message || reply;
-        } catch {}
-      }
-
-      addMessage("agent", reply);
-      statusText.innerHTML = "🟢 Connected to AI Agent";
-      statusText.className = "status-bar status-ok";
-    } catch (err) {
-      console.error('Fetch error:', err); // ✅ FIX: Log errors
-      chatBox.removeChild(loading);
-      sendBtn.disabled = false;
-      addMessage(
-        "agent",
-        `⚠️ Connection error: ${err.message}. Please check proxy/n8n.\n(Try /diagnostics endpoint for details.)`,
-        "error"
-      );
-      statusText.innerHTML = "🔴 Connection Failed";
-      statusText.className = "status-bar status-error";
-    }
-  }
-
-  sendBtn.addEventListener("click", sendMessage);
-  userInput.addEventListener("keypress", (e) => {
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
-      sendMessage();
-    }
-  });
-
-  window.addEventListener("load", async () => {
-    try {
-      const health = await fetch(`${BASE_URL}/health`);
-      if (health.ok) {
-        statusText.innerHTML = "🟢 Ready — Connected to Proxy";
-        statusText.className = "status-bar status-ok";
-      } else {
-        throw new Error(health.statusText);
-      }
-    } catch (err) {
-      console.error('Health check failed:', err);
-      statusText.innerHTML = `🔴 Proxy Not Responding: ${err.message}`;
-      statusText.className = "status-bar status-error";
-    }
-  });
 </script>
 
 </body>
